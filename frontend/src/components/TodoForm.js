@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import { Button, InputGroup, FormControl, Form } from 'react-bootstrap';
-
+import React, { useState } from "react";
+import { Button, InputGroup, FormControl, Form } from "react-bootstrap";
 
 function TodoForm() {
+    const [name, setName] = useState("");
     
-    return (
-        <Form>
-            <InputGroup className='mb-4'>
-                <FormControl placeholder='New Todo' />
-                <Button type='submit'>
-                    Add
-                </Button>
-            </InputGroup>
-        </Form>
-    )
+    const handleChange = (e) => {
+        setName(e.target.value);
+    }
+
+  return (
+    <Form>
+      <InputGroup className="mb-4">
+        <FormControl placeholder="New Todo" onChange={handleChange} value={name} />
+        <Button type="submit">Add</Button>
+      </InputGroup>
+    </Form>
+  );
 }
 
-
-export default TodoForm
+export default TodoForm;
