@@ -24,8 +24,9 @@ function App() {
         </Container>
       </Navbar>
       <Container>
-        <TodoForm/>
-        <TodoList todos={todos} />
+        <TodoForm setTodos={setTodos} />
+        
+        <TodoList todos={todos} setTodos={setTodos} />
       </Container>
     </div>
   );
