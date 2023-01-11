@@ -67,6 +67,7 @@ function TodoList({ todos = [], setTodos }) {
             onClick={() => {
               setRecord(t);
               setShow(true);
+              console.log('hello')
             }}
           />
           <MdDelete
