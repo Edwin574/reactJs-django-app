@@ -9,6 +9,9 @@ mysqlclient = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 
+[pipenv]
+install_search_all_sources = true
+
 [dev-packages]
 
 [requires]

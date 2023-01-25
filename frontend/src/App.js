@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/todos/').then((res) => {
       
+     console.log(res.data)
       setTodos(res.data)
     })
   },[])
