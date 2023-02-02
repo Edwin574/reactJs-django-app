@@ -6,6 +6,7 @@ function TodoForm() {
 
   const handleChange = (e) => {
     setName(e.target.value);
+    console.log('change handeled')
   };
 
   return (
@@ -16,7 +17,8 @@ function TodoForm() {
           onChange={handleChange}
           value={name}
         />
-        <Button type="submit">Add</Button>
+        {/* {name} */}
+        <Button type="submit" onClick={{}}>Add</Button>
       </InputGroup>
     </Form>
   );

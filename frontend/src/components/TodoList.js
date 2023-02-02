@@ -18,6 +18,7 @@ function TodoList({ todos = [], setTodos }) {
   const { record, setRecord } = useState(null);
 
   const handleClose = () => {
+    console.log('user clicked close button')
     setShow(false);
   };
 
@@ -96,7 +97,7 @@ function TodoList({ todos = [], setTodos }) {
     <div>
       <ListGroup>{todos.map(renderListGroupItem)}</ListGroup>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={true} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Todo</Modal.Title>
         </Modal.Header>
