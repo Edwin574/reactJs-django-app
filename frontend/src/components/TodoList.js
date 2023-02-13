@@ -18,8 +18,22 @@ function TodoList({ todos = [], setTodos }) {
   const { record, setRecord } = useState(null);
 
   const handleClose = () => {
-    console.log('user clicked close button')
+    console.log("user clicked close button");
     setShow(false);
+  };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`api/todos/${id}`)
+      .then(() => {
+        const newTodos = todos.filter((t) => {
+          return t.id !== id;
+        });
+        setTodos(newTodos);
+      })
+      .catch(() => {
+        console.log("something went wrong");
+      });
   };
 
   const handleUpdate = async (id, value) => {
@@ -68,12 +82,15 @@ function TodoList({ todos = [], setTodos }) {
             onClick={() => {
               setRecord(t);
               setShow(true);
-              console.log('hello')
+              console.log("hello");
             }}
           />
           <MdDelete
             style={{
               cursor: "pointer",
+            }}
+            onClick={() => {
+              handleDelete(t.id);
             }}
           />
         </div>
@@ -92,12 +109,22 @@ function TodoList({ todos = [], setTodos }) {
     await handleUpdate(record.id, { name: record.name });
     handleClose();
   };
+  const completedTodos = todos.filter((t) => t.completed === true);
+  const incompleteTodos = todos.filter((t) => t.completed === false);
 
   return (
     <div>
-      <ListGroup>{todos.map(renderListGroupItem)}</ListGroup>
+      <div className="mb-2 mt-4">
+        Complete Todos ({completedTodos.length})
+      </div>
 
-      <Modal show={true} onHide={handleClose}>
+      <ListGroup>{completedTodos.map(renderListGroupItem)}</ListGroup>
+      <div className="mb-2 mt-4">
+        Incomplete Todos ({incompleteTodos.length})
+      </div>
+      <ListGroup>{incompleteTodos.map(renderListGroupItem)}</ListGroup>
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Todo</Modal.Title>
         </Modal.Header>
