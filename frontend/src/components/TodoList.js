@@ -10,13 +10,16 @@ import {
   MdEdit,
   MdDelete,
 } from "react-icons/md";
-import { useState } from "react";
+// import { useState } from "react";
 
-function TodoList({ todos = [], setTodos }) {
-  const { show, setShow } = useState(false);
-
-  const { record, setRecord } = useState(null);
-
+function TodoList({
+  todos = [],
+  setTodos,
+  show = false,
+  setShow,
+  record = null,
+  setRecord,
+}) {
   const handleClose = () => {
     console.log("user clicked close button");
     setShow(false);
@@ -80,9 +83,10 @@ function TodoList({ todos = [], setTodos }) {
               marginRight: "12px",
             }}
             onClick={() => {
+              console.log('button clicked')
+              setShow(!show);
               setRecord(t);
-              setShow(true);
-              console.log("hello");
+
             }}
           />
           <MdDelete
@@ -114,9 +118,7 @@ function TodoList({ todos = [], setTodos }) {
 
   return (
     <div>
-      <div className="mb-2 mt-4">
-        Complete Todos ({completedTodos.length})
-      </div>
+      <div className="mb-2 mt-4">Complete Todos ({completedTodos.length})</div>
 
       <ListGroup>{completedTodos.map(renderListGroupItem)}</ListGroup>
       <div className="mb-2 mt-4">

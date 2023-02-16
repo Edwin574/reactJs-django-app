@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Button, InputGroup, FormControl, Form } from "react-bootstrap";
 
@@ -6,8 +7,11 @@ function TodoForm() {
 
   const handleChange = (e) => {
     setName(e.target.value);
-    console.log('change handeled')
   };
+  const addTask=(e)=>{
+   let newTask=e.target.value
+   axios.post('http://127.0.0.1:8000/api/todos/')
+  }
 
   return (
     <Form>
@@ -17,8 +21,7 @@ function TodoForm() {
           onChange={handleChange}
           value={name}
         />
-        {/* {name} */}
-        <Button type="submit" onClick={{}}>Add</Button>
+        <Button type="submit">Add</Button>
       </InputGroup>
     </Form>
   );

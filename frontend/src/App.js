@@ -7,6 +7,9 @@ import axios from "axios";
 function App() {
 
   const [todos, setTodos] = useState([])
+
+  const [ show, setShow ] = useState(false)
+  const [ record, setRecord ] = useState(null);
   
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/todos/').then((res) => {
@@ -27,7 +30,7 @@ function App() {
       <Container>
         <TodoForm setTodos={setTodos} />
         
-        <TodoList todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} show={show} setShow={setShow} record={record} setRecord={setRecord}/>
       </Container>
     </div>
   );
