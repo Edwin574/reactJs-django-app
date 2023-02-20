@@ -10,8 +10,10 @@ function TodoForm() {
   };
   const addTask=(e)=>{
     e.preventDefault()
-   let newTask=e.target.value
-   axios.post('http://127.0.0.1:8000/new',{newTask}).then((res)=>{
+    console.log(e)
+
+   let newTask={ "name":e.target.value,"completed": false} 
+   axios.post('http://127.0.0.1:8000/task',{newTask}).then((res)=>{
     console.log(res)
    }).catch((e)=>{
      console.log(e)
@@ -26,7 +28,7 @@ function TodoForm() {
           onChange={handleChange}
           value={name}
         />
-        <Button type="submit" onClick={addTask}>Add</Button>
+        <Button type="submit">Add</Button>
       </InputGroup>
     </Form>
   );
