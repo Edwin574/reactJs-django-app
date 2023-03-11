@@ -17,7 +17,7 @@ function App() {
      console.log(res.data)
       setTodos(res.data)
     })
-  },[])
+  },[todos])
   return (
     <div>
       <Navbar bg='light' style={{ marginBottom: '20px' }}>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, InputGroup, FormControl, Form } from "react-bootstrap";
 
-function TodoForm({ todo = [], setTodos }) {
+function TodoForm() {
   const [name, setName] = useState("");
 
   const handleChange = (e) => {
